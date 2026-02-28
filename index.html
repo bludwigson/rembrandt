@@ -815,18 +815,19 @@
 <script>
   // ─── Beat data ───────────────────────────────────────
   const BEATS = [
-    { title: "Shadow Work",   bpm: 140, key: "F# Min", tags: ["Trap", "Dark"],     dur: "3:14", price: "$29" },
-    { title: "Golden Ratio",  bpm: 86,  key: "C Maj",  tags: ["Lo-Fi", "Chill"],   dur: "2:58", price: "$29" },
-    { title: "Night Moves",   bpm: 130, key: "A Min",  tags: ["Drill", "Trap"],    dur: "3:42", price: "$29" },
-    { title: "Amber Room",    bpm: 93,  key: "D Min",  tags: ["Hip Hop", "Soul"],  dur: "2:31", price: "$29" },
-    { title: "Old Masters",   bpm: 95,  key: "E Min",  tags: ["Boom Bap"],         dur: "3:07", price: "$29" },
-    { title: "Candle & Wax",  bpm: 75,  key: "G Maj",  tags: ["Lo-Fi", "Jazz"],    dur: "4:01", price: "$29" },
+    { title: "After the Toast", bpm: null, key: null, tags: ["Hip Hop"], dur: "--:--", price: "$29", audio: "audio/After-the-Toast.mp3" },
+    { title: "Golden Ratio",    bpm: 86,   key: "C Maj",  tags: ["Lo-Fi", "Chill"],  dur: "2:58", price: "$29", audio: null },
+    { title: "Night Moves",     bpm: 130,  key: "A Min",  tags: ["Drill", "Trap"],   dur: "3:42", price: "$29", audio: null },
+    { title: "Amber Room",      bpm: 93,   key: "D Min",  tags: ["Hip Hop", "Soul"], dur: "2:31", price: "$29", audio: null },
+    { title: "Old Masters",     bpm: 95,   key: "E Min",  tags: ["Boom Bap"],        dur: "3:07", price: "$29", audio: null },
+    { title: "Candle & Wax",    bpm: 75,   key: "G Maj",  tags: ["Lo-Fi", "Jazz"],   dur: "4:01", price: "$29", audio: null },
   ];
 
   let current = null;
   const timers  = {};
   const rafIds  = {};
   const elapsed = {};
+  const audioPlayers = {};
 
   // ─── Render beat cards ────────────────────────────────
   function renderBeats() {
@@ -842,7 +843,7 @@
           <div class="beat-card-top">
             <div>
               <div class="beat-name">${b.title}</div>
-              <div class="beat-meta"><span>${b.bpm} BPM</span><span>${b.key}</span></div>
+              <div class="beat-meta">${b.bpm ? `<span>${b.bpm} BPM</span>` : ''} ${b.key ? `<span>${b.key}</span>` : ''}</div>
             </div>
             <button class="play-btn" id="pb-${i}" onclick="togglePlay(${i})" aria-label="Play ${b.title}">
               <svg width="13" height="15" viewBox="0 0 13 15" fill="currentColor">
@@ -874,8 +875,29 @@
     current = id;
     document.getElementById(`pb-${id}`).classList.add('playing');
     setPause(id);
-    elapsed[id] = elapsed[id] || 0;
-    startTimer(id);
+    const beat = BEATS[id];
+    if (beat.audio) {
+      if (!audioPlayers[id]) {
+        const a = new Audio(beat.audio);
+        a.addEventListener('timeupdate', () => {
+          if (current !== id) return;
+          const t = a.currentTime;
+          const em = Math.floor(t / 60);
+          const es = Math.floor(t % 60);
+          const dm = Math.floor(a.duration / 60) || '--';
+          const ds = Math.floor(a.duration % 60);
+          const durStr = isNaN(a.duration) ? beat.dur : `${dm}:${String(ds).padStart(2,'0')}`;
+          document.getElementById(`bt-${id}`).textContent =
+            `${em}:${String(es).padStart(2,'0')} / ${durStr}`;
+        });
+        a.addEventListener('ended', () => stopTrack(id));
+        audioPlayers[id] = a;
+      }
+      audioPlayers[id].play();
+    } else {
+      elapsed[id] = elapsed[id] || 0;
+      startTimer(id);
+    }
     animateWave(id);
   }
 
@@ -885,10 +907,15 @@
     clearInterval(timers[id]);
     cancelAnimationFrame(rafIds[id]);
     dimWave(id);
-    if (!keepElapsed) {
+    if (audioPlayers[id]) {
+      audioPlayers[id].pause();
+      if (!keepElapsed) {
+        audioPlayers[id].currentTime = 0;
+        document.getElementById(`bt-${id}`).textContent = `0:00 / ${BEATS[id].dur}`;
+      }
+    } else if (!keepElapsed) {
       elapsed[id] = 0;
-      const beat = BEATS[id];
-      document.getElementById(`bt-${id}`).textContent = `0:00 / ${beat.dur}`;
+      document.getElementById(`bt-${id}`).textContent = `0:00 / ${BEATS[id].dur}`;
     }
     if (current === id) current = null;
   }
