@@ -836,7 +836,7 @@
         <li>1 music video allowed</li>
         <li>Must credit Rembrandt</li>
       </ul>
-      <div class="shop-price"><sup>$</sup>29</div>
+      <div class="shop-price"><sup>$</sup>30</div>
       <button class="btn btn-outline" style="width:100%" onclick="openCheckout(null,'basic')">Get Basic</button>
     </div>
 
@@ -850,7 +850,7 @@
         <li>Radio broadcasting rights</li>
         <li>Must credit Rembrandt</li>
       </ul>
-      <div class="shop-price"><sup>$</sup>79</div>
+      <div class="shop-price"><sup>$</sup>50</div>
       <button class="btn btn-primary" style="width:100%" onclick="openCheckout(null,'premium')">Get Premium</button>
     </div>
 
@@ -1017,12 +1017,12 @@
             <div class="lo selected" data-lic="basic" onclick="selectCoLicense('basic')">
               <div class="lo-name">Basic</div>
               <div class="lo-desc">MP3 · 50k streams</div>
-              <div class="lo-price">$29</div>
+              <div class="lo-price">$30</div>
             </div>
             <div class="lo" data-lic="premium" onclick="selectCoLicense('premium')">
               <div class="lo-name">Premium</div>
               <div class="lo-desc">WAV + Stems</div>
-              <div class="lo-price">$79</div>
+              <div class="lo-price">$50</div>
             </div>
             <div class="lo" data-lic="exclusive" onclick="selectCoLicense('exclusive')">
               <div class="lo-name">Exclusive</div>
@@ -1087,12 +1087,12 @@
 <script>
   // ─── Beat data ───────────────────────────────────────
   const BEATS = [
-    { title: "After the Toast", bpm: null, key: null, tags: ["Hip Hop"], dur: "--:--", price: "$29", audio: "audio/After-the-Toast.mp3" },
-    { title: "Golden Ratio",    bpm: 86,   key: "C Maj",  tags: ["Lo-Fi", "Chill"],  dur: "2:58", price: "$29", audio: null },
-    { title: "Night Moves",     bpm: 130,  key: "A Min",  tags: ["Drill", "Trap"],   dur: "3:42", price: "$29", audio: null },
-    { title: "Amber Room",      bpm: 93,   key: "D Min",  tags: ["Hip Hop", "Soul"], dur: "2:31", price: "$29", audio: null },
-    { title: "Old Masters",     bpm: 95,   key: "E Min",  tags: ["Boom Bap"],        dur: "3:07", price: "$29", audio: null },
-    { title: "Candle & Wax",    bpm: 75,   key: "G Maj",  tags: ["Lo-Fi", "Jazz"],   dur: "4:01", price: "$29", audio: null },
+    { title: "After the Toast", bpm: null, key: null, tags: ["Hip Hop"], dur: "--:--", price: "$30", audio: "audio/After-the-Toast.mp3" },
+    { title: "Golden Ratio",    bpm: 86,   key: "C Maj",  tags: ["Lo-Fi", "Chill"],  dur: "2:58", price: "$30", audio: null },
+    { title: "Night Moves",     bpm: 130,  key: "A Min",  tags: ["Drill", "Trap"],   dur: "3:42", price: "$30", audio: null },
+    { title: "Amber Room",      bpm: 93,   key: "D Min",  tags: ["Hip Hop", "Soul"], dur: "2:31", price: "$30", audio: null },
+    { title: "Old Masters",     bpm: 95,   key: "E Min",  tags: ["Boom Bap"],        dur: "3:07", price: "$30", audio: null },
+    { title: "Candle & Wax",    bpm: 75,   key: "G Maj",  tags: ["Lo-Fi", "Jazz"],   dur: "4:01", price: "$30", audio: null },
   ];
 
   let current = null;
@@ -1260,8 +1260,8 @@
 
   // ─── Checkout ─────────────────────────────────────────
   const LICENSES = {
-    basic:     { label: 'Basic',     desc: 'MP3 Lease · Non-exclusive',  price: 29  },
-    premium:   { label: 'Premium',   desc: 'WAV + Stems · Non-exclusive', price: 79  },
+    basic:     { label: 'Basic',     desc: 'MP3 Lease · Non-exclusive',  price: 30  },
+    premium:   { label: 'Premium',   desc: 'WAV + Stems · Non-exclusive', price: 50  },
     exclusive: { label: 'Exclusive', desc: 'Full Ownership · All rights', price: 299 },
   };
 
