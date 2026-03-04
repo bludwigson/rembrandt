@@ -1286,15 +1286,25 @@
   }
 
   // ─── Waveform animation ───────────────────────────────
-  let waveStep = 0;
+  let wavePos = 0;
+  let lastWaveTime = 0;
+  const WAVE_SPEED = 85;
+  const LIT_WIDTH = 6; // number of bars lit at once
+
   function animateWave(id) {
-    waveStep++;
-    const bars = document.querySelectorAll(`#card-${id} .wv-bar`);
-    bars.forEach((bar, i) => {
-      bar.classList.toggle('lit', (i + waveStep) % 9 < 4);
-    });
-    rafIds[id] = requestAnimationFrame(() => {
-      if (current === id) animateWave(id);
+    rafIds[id] = requestAnimationFrame((now) => {
+      if (current !== id) return;
+      if (now - lastWaveTime >= WAVE_SPEED) {
+        lastWaveTime = now;
+        const bars = document.querySelectorAll(`#card-${id} .wv-bar`);
+        const total = bars.length;
+        wavePos = (wavePos + 1) % total;
+        bars.forEach((bar, i) => {
+          const dist = (i - wavePos + total) % total;
+          bar.classList.toggle('lit', dist < LIT_WIDTH);
+        });
+      }
+      animateWave(id);
     });
   }
 
