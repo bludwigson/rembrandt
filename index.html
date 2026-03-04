@@ -349,6 +349,20 @@
       font-size: 10px !important;
     }
 
+    /* ─── BEATSTARS EMBED ────────────────────────── */
+    .bs-embed {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      min-height: 600px;
+    }
+
+    .bs-embed iframe {
+      display: block;
+      width: 100%;
+      min-height: 600px;
+    }
+
     /* ─── SHOP ───────────────────────────────────── */
     #shop { background: var(--bg); }
 
@@ -362,13 +376,16 @@
       border: 1px solid var(--border);
       padding: 36px 32px 32px;
       position: relative;
-      transition: background .2s;
+      transition: background .2s, border-color .2s;
+      cursor: pointer;
     }
     .shop-card:hover { background: var(--surface2); }
 
-    .shop-card.hot {
+    .shop-card.selected {
       border-color: var(--gold);
+      background: var(--surface2);
     }
+
     .shop-card.hot::before {
       content: 'MOST POPULAR';
       position: absolute;
@@ -816,8 +833,32 @@
 <section id="beats">
   <p class="sec-label">Featured Works</p>
   <h2 class="sec-title">Latest Beats</h2>
-  <p class="sec-sub">Click any track to preview. All instrumentals available for licensing.</p>
-  <div class="beats-grid" id="beatsGrid"></div>
+  <p class="sec-sub">Browse, preview, and license beats directly.</p>
+
+  <!-- BeatStars Embedded Player -->
+  <div class="bs-embed" id="bsEmbed">
+    <!--
+      ═══════════════════════════════════════════════════════════════
+      HOW TO GET YOUR STORE ID:
+      1. Log into BeatStars → go to My Media → Players
+      2. Create a new player (or edit existing) → click Save
+      3. Scroll to "General Embed" and copy the storeId number
+      4. Replace YOUR_STORE_ID below with that number
+      ═══════════════════════════════════════════════════════════════
+    -->
+    <iframe
+      id="bsPlayer"
+      src="https://player.beatstars.com/?storeId=YOUR_STORE_ID"
+      style="width:100%;min-height:600px;border:none;"
+      allow="autoplay"
+    ></iframe>
+  </div>
+
+  <div style="text-align:center;margin-top:32px">
+    <a href="https://www.beatstars.com/mediamusic" target="_blank" class="btn btn-outline">
+      View Full Catalog on BeatStars ↗
+    </a>
+  </div>
 </section>
 
 <!-- ─── SHOP ──────────────────────────────────────────── -->
@@ -827,7 +868,7 @@
   <p class="sec-sub">Pick your license. Instant delivery — MP3, WAV, or full stems.</p>
 
   <div class="shop-grid">
-    <div class="shop-card">
+    <div class="shop-card" onclick="selectShopCard(this)">
       <h3>Basic</h3>
       <p class="shop-card-sub">MP3 Lease · Non-exclusive</p>
       <ul class="perks">
@@ -837,10 +878,10 @@
         <li>Must credit Rembrandt</li>
       </ul>
       <div class="shop-price"><sup>$</sup>30</div>
-      <button class="btn btn-outline" style="width:100%" onclick="openCheckout(null,'basic')">Get Basic</button>
+      <a href="https://www.beatstars.com/mediamusic" target="_blank" class="btn btn-outline" style="width:100%;text-align:center">Get Basic</a>
     </div>
 
-    <div class="shop-card hot">
+    <div class="shop-card hot selected" onclick="selectShopCard(this)">
       <h3>Premium</h3>
       <p class="shop-card-sub">WAV + Stems · Non-exclusive</p>
       <ul class="perks">
@@ -851,10 +892,10 @@
         <li>Must credit Rembrandt</li>
       </ul>
       <div class="shop-price"><sup>$</sup>50</div>
-      <button class="btn btn-primary" style="width:100%" onclick="openCheckout(null,'premium')">Get Premium</button>
+      <a href="https://www.beatstars.com/mediamusic" target="_blank" class="btn btn-primary" style="width:100%;text-align:center">Get Premium</a>
     </div>
 
-    <div class="shop-card">
+    <div class="shop-card" onclick="selectShopCard(this)">
       <h3>Exclusive</h3>
       <p class="shop-card-sub">Full Ownership · All rights</p>
       <ul class="perks">
@@ -865,7 +906,7 @@
         <li>Sync licensing included</li>
       </ul>
       <div class="shop-price"><sup>$</sup>299</div>
-      <button class="btn btn-outline" style="width:100%" onclick="openCheckout(null,'exclusive')">Inquire for Exclusive</button>
+      <a href="https://www.beatstars.com/mediamusic" target="_blank" class="btn btn-outline" style="width:100%;text-align:center">Inquire for Exclusive</a>
     </div>
   </div>
 </section>
@@ -1256,6 +1297,12 @@
       btn.style.cssText = 'align-self:flex-start';
       e.target.reset();
     }, 3500);
+  }
+
+  // ─── Shop card selection ─────────────────────────────
+  function selectShopCard(card) {
+    document.querySelectorAll('.shop-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
   }
 
   // ─── Checkout ─────────────────────────────────────────
