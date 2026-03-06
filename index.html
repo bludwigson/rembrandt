@@ -454,7 +454,7 @@
     /* ─── SOCIAL ─────────────────────────────────── */
     .social-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2px;
     }
 
@@ -934,6 +934,19 @@
   <h2 class="sec-title">Stay Connected</h2>
   <p class="sec-sub">Find Rembrandt across all platforms — new beats, behind-the-scenes, and more.</p>
   <div class="social-cards">
+    <a href="https://www.youtube.com/@ItsReallyRembrandt" target="_blank" class="social-card">
+      <div class="sc-icon">
+        <svg width="24" height="18" viewBox="0 0 24 18" fill="currentColor">
+          <path d="M23.5 2.8A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.8C0 4.7 0 8.7 0 8.7s0 4 .5 5.9a3 3 0 0 0 2.1 2.1C4.5 17.3 12 17.3 12 17.3s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.9.5-5.9s0-4-.5-5.9z"/>
+          <polygon points="9.6,12.4 15.8,8.7 9.6,5 " fill="#080807"/>
+        </svg>
+      </div>
+      <div class="sc-info">
+        <div class="sc-name">YouTube</div>
+        <div class="sc-handle">youtube.com/@ItsReallyRembrandt</div>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </a>
     <a href="#" class="social-card">
       <div class="sc-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -958,19 +971,6 @@
       <div class="sc-info">
         <div class="sc-name">SoundCloud</div>
         <div class="sc-handle">soundcloud.com/rembrandt</div>
-      </div>
-      <div class="sc-arrow">↗</div>
-    </a>
-    <a href="#" class="social-card">
-      <div class="sc-icon">
-        <svg width="24" height="18" viewBox="0 0 24 18" fill="currentColor">
-          <path d="M23.5 2.8A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.8C0 4.7 0 8.7 0 8.7s0 4 .5 5.9a3 3 0 0 0 2.1 2.1C4.5 17.3 12 17.3 12 17.3s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.9.5-5.9s0-4-.5-5.9z"/>
-          <polygon points="9.6,12.4 15.8,8.7 9.6,5 " fill="#080807"/>
-        </svg>
-      </div>
-      <div class="sc-info">
-        <div class="sc-name">YouTube</div>
-        <div class="sc-handle">youtube.com/@rembrandt</div>
       </div>
       <div class="sc-arrow">↗</div>
     </a>
@@ -1009,9 +1009,9 @@
           <div class="ci-icon">SC</div>
           soundcloud.com/rembrandt
         </a>
-        <a href="#" class="contact-item">
+        <a href="https://www.youtube.com/@ItsReallyRembrandt" target="_blank" class="contact-item">
           <div class="ci-icon">YT</div>
-          youtube.com/@rembrandt
+          youtube.com/@ItsReallyRembrandt
         </a>
       </div>
     </div>
@@ -1136,7 +1136,7 @@
   <div class="footer-socials">
     <a href="#" class="social-lnk">Instagram</a>
     <a href="#" class="social-lnk">SoundCloud</a>
-    <a href="#" class="social-lnk">YouTube</a>
+    <a href="https://www.youtube.com/@ItsReallyRembrandt" target="_blank" class="social-lnk">YouTube</a>
     <a href="#" class="social-lnk">Twitter / X</a>
   </div>
   <p class="footer-copy">© 2026 Rembrandt. All rights reserved.</p>
@@ -1145,12 +1145,12 @@
 <script>
   // ─── Beat data ───────────────────────────────────────
   const BEATS = [
-    { title: "After the Toast", bpm: null, key: null, tags: ["Hip Hop"], dur: "--:--", price: "$30", audio: "audio/After-the-Toast.mp3" },
-    { title: "Golden Ratio",    bpm: 86,   key: "C Maj",  tags: ["Lo-Fi", "Chill"],  dur: "2:58", price: "$30", audio: null },
-    { title: "Night Moves",     bpm: 130,  key: "A Min",  tags: ["Drill", "Trap"],   dur: "3:42", price: "$30", audio: null },
-    { title: "Amber Room",      bpm: 93,   key: "D Min",  tags: ["Hip Hop", "Soul"], dur: "2:31", price: "$30", audio: null },
-    { title: "Old Masters",     bpm: 95,   key: "E Min",  tags: ["Boom Bap"],        dur: "3:07", price: "$30", audio: null },
-    { title: "Candle & Wax",    bpm: 75,   key: "G Maj",  tags: ["Lo-Fi", "Jazz"],   dur: "4:01", price: "$30", audio: null },
+    { title: "After the Toast",        bpm: null, key: null, tags: ["Hip Hop"],          dur: "--:--", price: "$30", audio: "audio/After-the-Toast.mp3" },
+    { title: "Godfather G",            bpm: null, key: null, tags: ["Hip Hop", "Trap"],  dur: "--:--", price: "$30", audio: "audio/%2AGodfather%20G.mp3" },
+    { title: "No Way LTD",             bpm: null, key: null, tags: ["Trap"],             dur: "--:--", price: "$30", audio: "audio/%2ANo%20Way%20LTD_2.mp3" },
+    { title: "RFF 2",                  bpm: null, key: null, tags: ["Hip Hop"],          dur: "--:--", price: "$30", audio: "audio/%2ARFF%202.mp3" },
+    { title: "Something Crazy Sapo",   bpm: null, key: null, tags: ["Lo-Fi", "Chill"],   dur: "--:--", price: "$30", audio: "audio/%2ASomething%20Crazy%20Sapo%20%237.mp3" },
+    { title: "3W2 E Demo",             bpm: null, key: null, tags: ["Hip Hop", "Boom Bap"], dur: "--:--", price: "$30", audio: "audio/%2A3w_2%20E%20demo.mp3" },
   ];
 
   let current = null;
@@ -1240,6 +1240,7 @@
       elapsed[id] = elapsed[id] || 0;
       startTimer(id);
     }
+    wavePos = 0;
     animateWave(id);
   }
 
