@@ -53,12 +53,13 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garant', serif;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: auto;
     }
 
     .nav-links {
@@ -585,12 +586,9 @@
       gap: 24px;
     }
 
-    .footer-logo {
-      font-family: 'Cormorant Garant', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: .12em;
+    .footer-logo img {
+      height: 48px;
+      width: auto;
     }
 
     .footer-socials {
@@ -811,7 +809,7 @@
 
 <!-- ─── NAV ─────────────────────────────────────────── -->
 <nav>
-  <a href="#hero" class="nav-logo">REM<span class="accent">BRAND</span>T</a>
+  <a href="#hero" class="nav-logo"><img src="ScholarMediaLogo.PNG" alt="Scholar Media" /></a>
   <ul class="nav-links">
     <li><a href="#beats">Beats</a></li>
     <li><a href="#shop">Shop</a></li>
@@ -983,6 +981,19 @@
       </div>
       <div class="sc-arrow">↗</div>
     </a>
+    <a href="https://soundcloud.com/mediabeats" target="_blank" class="social-card">
+      <div class="sc-icon">
+        <svg width="30" height="20" viewBox="0 0 30 20" fill="var(--gold)">
+          <path d="M0 13.5a3 3 0 0 0 3 3h17.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.3-2.5A3.5 3.5 0 0 0 6 7.1a3 3 0 0 0-6 6.4z"/>
+          <path d="M23 5a2 2 0 0 0-1.4.6A4.5 4.5 0 0 0 20 5.5v11h8a2 2 0 0 0 2-2V10a4 4 0 0 0-4-4l-3-1z" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="sc-info">
+        <div class="sc-name">SoundCloud</div>
+        <div class="sc-handle">soundcloud.com/mediabeats</div>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </a>
   </div>
 </section>
 
@@ -1028,6 +1039,15 @@
             </svg>
           </div>
           youtube.com/@ItsReallyRembrandt
+        </a>
+        <a href="https://soundcloud.com/mediabeats" target="_blank" class="contact-item">
+          <div class="ci-icon">
+            <svg width="22" height="14" viewBox="0 0 30 20" fill="var(--gold)">
+              <path d="M0 13.5a3 3 0 0 0 3 3h17.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.3-2.5A3.5 3.5 0 0 0 6 7.1a3 3 0 0 0-6 6.4z"/>
+              <path d="M23 5a2 2 0 0 0-1.4.6A4.5 4.5 0 0 0 20 5.5v11h8a2 2 0 0 0 2-2V10a4 4 0 0 0-4-4l-3-1z" opacity=".5"/>
+            </svg>
+          </div>
+          soundcloud.com/mediabeats
         </a>
       </div>
     </div>
@@ -1148,9 +1168,10 @@
 
 <!-- ─── FOOTER ────────────────────────────────────────── -->
 <footer>
-  <div class="footer-logo">REM<span class="accent">BRAND</span>T</div>
+  <div class="footer-logo"><img src="ScholarMediaLogo.PNG" alt="Scholar Media" /></div>
   <div class="footer-socials">
     <a href="https://www.youtube.com/@ItsReallyRembrandt" target="_blank" class="social-lnk">YouTube</a>
+    <a href="https://soundcloud.com/mediabeats" target="_blank" class="social-lnk">SoundCloud</a>
   </div>
   <p class="footer-copy">© 2026 Rembrandt. All rights reserved.</p>
 </footer>
