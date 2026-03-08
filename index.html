@@ -100,15 +100,7 @@
       pointer-events: none;
     }
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(200,150,44,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,150,44,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
+    .hero-grid { display: none; }
 
     .hero-content { position: relative; z-index: 1; }
 
@@ -142,9 +134,25 @@
 
     .cta-row {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
+    }
+    .cta-row .btn {
+      width: 160px;
+      padding: 14px 0;
+    }
+    /* When hovering the row, dim License a Beat unless it's the hovered one */
+    .cta-row:hover .btn-primary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text);
+    }
+    .cta-row:hover .btn-primary:hover,
+    .cta-row:hover .btn-hero:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
     }
 
     .btn {
@@ -176,6 +184,18 @@
       border: 1px solid var(--border);
     }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-hero {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+    }
+    .btn-hero:hover, .btn-hero:active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
 
     .scroll-indicator {
       position: absolute;
@@ -834,8 +854,9 @@
     <p class="hero-eyebrow">Hip Hop · Trap · Lo-Fi</p>
     <p class="hero-tagline">Beats that hit different. From gritty trap to soul-soaked lo-fi, every track tells a story.</p>
     <div class="cta-row">
-      <a href="#beats" class="btn btn-primary">Hear the Sound</a>
-      <a href="#shop" class="btn btn-outline">License a Beat</a>
+      <a href="#beats" class="btn btn-hero">Hear the Sound</a>
+      <a href="#shop" class="btn btn-primary">License a Beat</a>
+      <a href="#contact" class="btn btn-hero">Contact Us</a>
     </div>
   </div>
 </section>
